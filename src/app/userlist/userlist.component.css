@@ -1,0 +1,10 @@
+.profile-pic{
+    height: 60px;
+    width: 60px;
+}
+.colheader{
+    cursor:pointer;
+}
+.table thead th{
+    border: 1px solid white;
+}

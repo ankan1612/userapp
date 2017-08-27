@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row justify-content-center"  style="padding-top:100px">
+        <div class="col-md-4" style="border: 2px solid; border-radius: 10px; padding:10px">
+            <h1>Add New User</h1>
+            <hr>
+            <form (ngSubmit)="formSubmit()" novalidate #userForm="ngForm">
+                <div class="form-group row">
+                  <label for="fname" class="col-3 col-form-label">First Name:</label>
+                  <div class="col">
+                    <input class="form-control" type="text" placeholder="First Name" #fname="ngModel" name="fname" required [(ngModel)]="user.firstName">
+                    <div *ngIf="fname.errors && fname.dirty" class="errors">
+                      <p [hidden]="!fname.errors.required">First name is required</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="lname" class="col-3 col-form-label">Last Name:</label>
+                  <div class="col">
+                    <input class="form-control" type="text" placeholder="Last Name" #lname="ngModel" name="lname"  required [(ngModel)]="user.lastName">
+                    <div *ngIf="lname.errors && lname.dirty" class="errors">
+                      <p [hidden]="!lname.errors.required">Last name is required</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="email" class="col-3 col-form-label">Email:</label>
+                  <div class="col">
+                    <input class="form-control" type="email" placeholder="Email" #email="ngModel" name="email" required [email]="true" [(ngModel)]="user.email">
+                    <div *ngIf="email.errors && email.dirty" class="errors">
+                      <p [hidden]="!email.errors.required">Email is required</p>
+                      <p [hidden]="!email.errors.email">Email is invalid</p>
+                    </div>
+                  </div>
+                </div>
+                 <div class="form-group row">
+                  <label for="state" class="col-3 col-form-label">State:</label>
+                  <div class="col">
+                    <input class="form-control" type="text" placeholder="state" #state="ngModel" name="state" required [(ngModel)]="user.address.state">
+                    <div *ngIf="state.errors && state.dirty" class="errors">
+                      <p [hidden]="!state.errors.required">State is required</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="cname" class="col-3 col-form-label">Company Name:</label>
+                  <div class="col">
+                    <input class="form-control" type="text" placeholder="Company Name" #cname="ngModel" name="cname" required [(ngModel)]="user.company.name">
+                    <div *ngIf="cname.errors && cname.dirty" class="errors">
+                      <p [hidden]="!cname.errors.required">Company name is required</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col d-flex justify-content-end">
+                        <button class="btn btn-primary" [disabled]="userForm.form.invalid" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Success</h4>
+  </div>
+  <div class="modal-body">
+    <p>User has been added successfully!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="redirectTo();">Done Adding</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Add More User</button>
+  </div>
+</ng-template>
