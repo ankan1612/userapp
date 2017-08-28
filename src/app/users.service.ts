@@ -11,13 +11,13 @@ export class UserService {
     constructor(private http: Http){}
     
     getUsers(): Observable<any[]> {
-        return this.http.get('http://mocker.egen.io/users')
+        return this.http.get('https://api.myjson.com/bins/y6f3x')
             .map(response => response.json())
             .catch(error => Observable.throw(error.statusText));
     }
     
     getUsersById(id: string): Observable<any[]> {
-        return this.http.get(`http://mocker.egen.io/users/${id}`)
+        return this.http.get(`https://api.myjson.com/bins/${id}`)
             .map(response => response.json())
             .catch(error => Observable.throw(error.statusText));
     }
