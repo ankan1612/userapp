@@ -15,6 +15,10 @@
                     <input type="text" class="form-control" name="search" aria-label="Text input with dropdown button" placeholder="Search" [(ngModel)]="toSearch.searchText">
                 </div>
               </div>
+              <div class="col-lg-6 d-flex justify-content-end">
+                  <a [routerLink]="['/adduser']" class="btn btn-primary right-margin">Add New User</a>
+                  <button class="btn btn-danger" (click)="resetUser()">Reset Users</button>
+              </div>
             </div>
             <div class="row-fluid">
                 <div class="table-responsive">          

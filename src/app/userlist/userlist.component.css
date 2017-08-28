@@ -8,3 +8,6 @@
 .table thead th{
     border: 1px solid white;
 }
+.right-margin{
+    margin-right:10px;
+}

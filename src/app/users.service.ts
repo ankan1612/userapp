@@ -21,8 +21,18 @@ export class UserService {
             .map(response => response.json())
             .catch(error => Observable.throw(error.statusText));
     }
+    putAllUsers(users: any): Observable<any[]> {
+        return this.http.put('https://api.myjson.com/bins/y6f3x', users)
+            .map(response => response.json())
+            .catch(error => Observable.throw(error.statusText));
+    } 
     addUser(user: any): Observable<any[]> {
-        return this.http.post('http://mocker.egen.io/users', user)
+        return this.http.post('https://api.myjson.com/bins', user)
+            .map(response => response.json())
+            .catch(error => Observable.throw(error.statusText));
+    } 
+    putUser(uri: string, user: any): Observable<any[]> {
+        return this.http.put(uri, user)
             .map(response => response.json())
             .catch(error => Observable.throw(error.statusText));
     } 
