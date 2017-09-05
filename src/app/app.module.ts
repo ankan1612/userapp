@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { BusyModule } from 'angular2-busy';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -28,7 +30,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent, PageNotFoundComponent, UserListComponent, AddUserComponent, UserDetailComponent, OrderUserPipe, FilterUserPipe],
-  imports: [BrowserModule, NgbModule.forRoot(), HttpModule, FormsModule, RouterModule.forRoot(appRoutes, { useHash: true })],
+  imports: [BrowserModule, BrowserAnimationsModule, NgbModule.forRoot(), HttpModule, FormsModule, BusyModule, RouterModule.forRoot(appRoutes, { useHash: true })],
   providers: [UserService],
   bootstrap: [AppComponent]
 })

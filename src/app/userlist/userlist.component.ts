@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { UserService } from '../users.service'
+import { UserService } from '../users.service';
+
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './userlist.component.html',
   styleUrls: ['./userlist.component.css'],
   providers: [UserService]
 })
-export class UserListComponent {
-  
+export class UserListComponent implements OnInit {
+  busy: Subscription;
+  imgLoaded: any = {};
   isDesc: boolean = false;
   column: any;
   direction: number;
@@ -26,13 +29,19 @@ export class UserListComponent {
   constructor(private userService: UserService) {
     this.toSearch.criteria = this.searchOptions[this.selected];
     this.toSearch.searchText='';
-    this.getUser();
   };
   
+  ngOnInit(){
+    this.getUser(); 
+  }
+  
   getUser(){
-    this.userService.getUsers()
+    this.busy = this.userService.getUsers()
      .subscribe(
-         users => this.users = users,
+         users => {
+           this.users = users;
+           this.users.forEach(u => this.imgLoaded[u.id] = false);
+         },
          error => console.log(error)
       );
   }

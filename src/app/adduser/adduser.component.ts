@@ -63,7 +63,7 @@ export class AddUserComponent {
   }
   
   redirectTo(){
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('users');
       this.modalRef.close();
   }
   
