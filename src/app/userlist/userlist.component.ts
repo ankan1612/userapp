@@ -258,5 +258,4 @@ export class UserListComponent implements OnInit {
           _error => console.log(_error)
         );
   };
-  
 }
