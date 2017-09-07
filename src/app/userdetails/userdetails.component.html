@@ -8,13 +8,13 @@
             <hr>
             <div class="row">
                 <div class="col-md-4 justify-content-center">
-                    <md-spinner class="smallspinner" *ngIf="!imgLoaded"></md-spinner><img *ngIf="user.profilePic" [src]="user.profilePic" class="img-responsive profile-pic rounded-circle" (load)="imgLoaded=true">
+                    <md-spinner class="smallspinner" [strokeWidth]="4" *ngIf="!imgLoaded"></md-spinner><img [hidden]="!imgLoaded" [src]="user.profilePic" class="img-responsive profile-pic rounded-circle" (load)="imgLoaded=true">
                 </div>
                 <div class="col-md-8 justify-content-center">
                     <div class="row"><div class="col"><strong>Email: </strong> {{user.email}}</div></div>
-                    <div class="row" *ngIf="user.address"><div class="col"><strong>Address: </strong> {{user.address.street}}, {{user.address.city}}, {{user.address.state}} {{user.address.zip}}, {{user.address.country}}</div></div>
-                    <div class="row" *ngIf="user.company"><div class="col"><strong>Company: </strong> {{user.company.name}}</div></div>
-                    <div class="row" *ngIf="user.company"><div class="col"><strong>Website: </strong> <a [href]="user.company.website">{{user.company.website}}</a></div></div>
+                    <div class="row" *ngIf="user.address"><div class="col"><strong>Address: </strong>{{user.address.street}}, {{user.address.city}}, {{user.address.state}} {{user.address.zip}}, {{user.address.country}}</div></div>
+                    <div class="row" *ngIf="user.company"><div class="col"><strong>Company: </strong>{{user.company.name}}</div></div>
+                    <div class="row" *ngIf="user.company"><div class="col"><strong>Website: </strong><a [href]="user.company.website">{{user.company.website}}</a></div></div>
                 </div>
             </div>
         </div>
